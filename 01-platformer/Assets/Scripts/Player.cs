@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public Sprite idleSprite;
     public Sprite jumpingSprite;
     public LayerMask groundLayer;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         initialTreesXOffset = treesLayer.transform.localPosition.x;
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
+        audioSource = GameObject.Find("JumpSound").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -40,6 +42,8 @@ public class Player : MonoBehaviour
         if (isGrounded() && Input.GetButtonDown("Jump"))
         {
             hasJumpButtonBeenPressed = true;
+            audioSource.Play();
+
         }
 
         mountainsLayer.transform.localPosition = new Vector3(initialMountainXOffset - 0.2f * transform.position.x, mountainsLayer.transform.localPosition.y, mountainsLayer.transform.localPosition.z);
