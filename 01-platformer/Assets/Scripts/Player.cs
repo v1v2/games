@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private bool hasJumpButtonBeenPressed;
     //private float distToGround = 1.25f; /* half of capsule height */
     private Rigidbody2D body;
-    private float jumpVelocity = 5.0f;
+    private float jumpVelocity = 20.0f;
     private float runSpeed = 10f;
     private GameObject mountainsLayer;
     private float initialMountainXOffset;

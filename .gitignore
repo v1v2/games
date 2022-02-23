@@ -59,4 +59,5 @@ sysinfo.txt
 crashlytics-build.properties
 
 .DS_Store
+*/dist/
 */Assets/TextMesh Pro/
