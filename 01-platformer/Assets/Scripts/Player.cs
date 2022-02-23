@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private bool hasJumpButtonBeenPressed;
     //private float distToGround = 1.25f; /* half of capsule height */
     private Rigidbody2D body;
-    private float jumpForce = 100.0f;
+    private float jumpVelocity = 5.0f;
     private float runSpeed = 10f;
     private GameObject mountainsLayer;
     private float initialMountainXOffset;
@@ -34,18 +34,20 @@ public class Player : MonoBehaviour
         }
 
         mountainsLayer.transform.localPosition = new Vector3(initialMountainXOffset - 0.2f * transform.position.x, mountainsLayer.transform.localPosition.y, mountainsLayer.transform.localPosition.z);
-        treesLayer.transform.localPosition = new Vector3(initialTreesXOffset - 2f * transform.position.x, treesLayer.transform.localPosition.y, treesLayer.transform.localPosition.z);
+        treesLayer.transform.localPosition = new Vector3(initialTreesXOffset - 2f * transform.position.x, 0, treesLayer.transform.localPosition.z);
+        treesLayer.transform.position = new Vector3(treesLayer.transform.position.x, -3f, treesLayer.transform.position.z);
     }
 
     private void FixedUpdate()
     {
-        body.velocity = new Vector2(horizontalInput * runSpeed, 0);
+        body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
 
         if (hasJumpButtonBeenPressed)
         {
             //if (Physics.Raycast(transform.position, Vector2.down, distToGround + 0.1f))
             //{
-            body.velocity = new Vector2(0, jumpForce);
+             body.velocity = Vector2.up * jumpVelocity;
+
             //}
             hasJumpButtonBeenPressed = false;
         }
