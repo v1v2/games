@@ -271,6 +271,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8703657210764205496, guid: 73af29f07d353492b890a0ba97021a78, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703657212319021387, guid: 73af29f07d353492b890a0ba97021a78, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73af29f07d353492b890a0ba97021a78, type: 3}
 --- !u!4 &962889794 stripped
@@ -287,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1055403828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140906319}
   - component: {fileID: 1140906318}
-  - component: {fileID: 1140906321}
+  - component: {fileID: 1140906323}
   - component: {fileID: 1140906320}
   - component: {fileID: 1140906322}
   m_Layer: 0
@@ -372,8 +380,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0, g: 0.3486538, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5353858d2695c4e9c92d802ed4e88416, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -423,22 +431,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &1140906321
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140906317}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1e6332d84411d45bb8e9ce00a1d9ae01, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!114 &1140906322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +443,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fbb968d8d3e34efeab0cc9d64b5ed84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleSprite: {fileID: 21300000, guid: 5353858d2695c4e9c92d802ed4e88416, type: 3}
+  jumpingSprite: {fileID: 21300000, guid: ff2793954efcf4b22a1c3b16e2733a27, type: 3}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!61 &1140906323
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140906317}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 1e6332d84411d45bb8e9ce00a1d9ae01, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 4}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.61, y: 3.8}
+  m_EdgeRadius: 0
 --- !u!1 &1820674494
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +797,14 @@ PrefabInstance:
     - target: {fileID: 8703657210764205496, guid: 73af29f07d353492b890a0ba97021a78, type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703657210764205496, guid: 73af29f07d353492b890a0ba97021a78, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703657212319021387, guid: 73af29f07d353492b890a0ba97021a78, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73af29f07d353492b890a0ba97021a78, type: 3}

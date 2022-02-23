@@ -14,6 +14,13 @@ public class Player : MonoBehaviour
     private float initialMountainXOffset;
     private GameObject treesLayer;
     private float initialTreesXOffset;
+    private string spriteType;
+    private string lastDirection = "right";
+    private BoxCollider2D boxCollider;
+    private SpriteRenderer spriteRenderer;
+    public Sprite idleSprite;
+    public Sprite jumpingSprite;
+    public LayerMask groundLayer;
 
     void Start()
     {
@@ -22,13 +29,15 @@ public class Player : MonoBehaviour
         initialMountainXOffset = mountainsLayer.transform.localPosition.x;
         treesLayer = GameObject.Find("Trees Layer");
         initialTreesXOffset = treesLayer.transform.localPosition.x;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Jump"))
+        if (isGrounded() && Input.GetButtonDown("Jump"))
         {
             hasJumpButtonBeenPressed = true;
         }
@@ -36,6 +45,18 @@ public class Player : MonoBehaviour
         mountainsLayer.transform.localPosition = new Vector3(initialMountainXOffset - 0.2f * transform.position.x, mountainsLayer.transform.localPosition.y, mountainsLayer.transform.localPosition.z);
         treesLayer.transform.localPosition = new Vector3(initialTreesXOffset - 2f * transform.position.x, 0, treesLayer.transform.localPosition.z);
         treesLayer.transform.position = new Vector3(treesLayer.transform.position.x, -3f, treesLayer.transform.position.z);
+        if (horizontalInput != 0) {
+            lastDirection = horizontalInput > 0 ? "right" : "left";
+
+            spriteRenderer.flipX = lastDirection == "left";
+        }
+    
+    }
+
+    public bool isGrounded() {
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 1f, groundLayer);
+        //Debug.Log(hit.collider);
+        return hit.collider != null;
     }
 
     private void FixedUpdate()
@@ -44,12 +65,10 @@ public class Player : MonoBehaviour
 
         if (hasJumpButtonBeenPressed)
         {
-            //if (Physics.Raycast(transform.position, Vector2.down, distToGround + 0.1f))
-            //{
              body.velocity = Vector2.up * jumpVelocity;
-
-            //}
             hasJumpButtonBeenPressed = false;
         }
+
+        spriteRenderer.sprite = isGrounded() ? idleSprite : jumpingSprite;
     }
 }
