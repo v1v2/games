@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
         mountainsLayer.transform.localPosition = new Vector3(initialMountainXOffset - 0.2f * transform.position.x, mountainsLayer.transform.localPosition.y, mountainsLayer.transform.localPosition.z);
         treesLayer.transform.localPosition = new Vector3(initialTreesXOffset - 2f * transform.position.x, 0, treesLayer.transform.localPosition.z);
-        treesLayer.transform.position = new Vector3(treesLayer.transform.position.x, -3f, treesLayer.transform.position.z);
+        treesLayer.transform.position = new Vector3(treesLayer.transform.position.x, -2.5f, treesLayer.transform.position.z);
         if (horizontalInput != 0) {
             lastDirection = horizontalInput > 0 ? "right" : "left";
 
