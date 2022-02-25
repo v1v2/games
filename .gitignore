@@ -61,4 +61,5 @@ crashlytics-build.properties
 .DS_Store
 */dist/
 */Assets/TextMesh Pro/
+*/UserSettings/
 mono_crash*
