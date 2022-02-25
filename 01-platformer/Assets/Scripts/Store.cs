@@ -49,7 +49,13 @@ public class Store : MonoBehaviour
     public event Action onWin;
     public async void Win() {
         onWin?.Invoke();
-        await Task.Delay(2000);
+        await DelayAsync(2);
         SceneManager.LoadScene("Start Screen");
+    }
+
+    public static async Task DelayAsync(float secondsDelay)
+    {
+        float startTime = Time.time;
+        while (Time.time < startTime + secondsDelay) await Task.Yield();
     }
 }
