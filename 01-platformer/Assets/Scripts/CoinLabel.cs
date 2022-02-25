@@ -15,6 +15,6 @@ public class CoinLabel : MonoBehaviour
 
     private void OnPickUpCoin()
     {
-        GetComponent<TextMeshProUGUI>().SetText("Coins: " + Store.current.coinCount);
+        GetComponent<TextMeshProUGUI>().SetText("Coins: " + Store.current.coinCount.ToString());
     }
 }
