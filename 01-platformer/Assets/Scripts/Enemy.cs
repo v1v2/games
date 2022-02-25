@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         startingPosition = transform.localPosition;
+        if (!Global.areEnemiesEnabled) {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Update()
