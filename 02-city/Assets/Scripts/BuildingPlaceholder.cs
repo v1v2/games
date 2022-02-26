@@ -232,6 +232,7 @@ public class BuildingPlaceholder : MonoBehaviour
                     {
                         Global.money -= cost.money;
                     }
+                    GetComponentInChildren<AudioSource>().Play();
                 }
             }
             else
