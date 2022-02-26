@@ -13,38 +13,38 @@ public class UI : MonoBehaviour
     private TextMeshProUGUI daysLabel;
 
     private string GetDetails(Cost cost, Gains gains) {
-        string str = "Cost |";
+        string str = "Cost         ";
 
         if (cost.food > 0) {
-            str += " Food: " + cost.food;
+            str += "  Food: " + cost.food;
         }
         if (cost.people > 0) {
-            str += " People: " + cost.people;
+            str += "  People: " + cost.people;
         }
         if (cost.energy > 0) {
-            str += " Energy: " + cost.energy;
+            str += "  Energy: " + cost.energy;
         }
         if (cost.money > 0) {
-            str += " Money: " + cost.money;
+            str += "  Money: " + cost.money;
         }
 
-        str += "\nGains per day |";
+        str += "\nGain/day  ";
 
         if (gains.food > 0)
         {
-            str += " Food: " + gains.food;
+            str += "  Food: " + gains.food;
         }
         if (gains.people > 0)
         {
-            str += " People: " + gains.people;
+            str += "  People: " + gains.people;
         }
         if (gains.energy > 0)
         {
-            str += " Energy: " + gains.energy;
+            str += "  Energy: " + gains.energy;
         }
         if (gains.money > 0)
         {
-            str += " Money: " + gains.money;
+            str += "  Money: " + gains.money;
         }
 
         return str;
