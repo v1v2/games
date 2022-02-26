@@ -1,22 +1,6 @@
 using System;
 using UnityEngine;
 
-public class Cost
-{
-    public int food;
-    public int people;
-    public int energy;
-    public int money;
-
-    public Cost(int food, int people, int energy, int money)
-    {
-        this.food = food;
-        this.people = people;
-        this.energy = energy;
-        this.money = money;
-    }
-}
-
 public class BuildingPlaceholder : MonoBehaviour
 {
     public GameObject smallFarmPrefab;
@@ -27,24 +11,6 @@ public class BuildingPlaceholder : MonoBehaviour
     public GameObject bigPowerPlantPrefab;
     public GameObject smallBusinessPrefab;
     public GameObject bigBusinessPrefab;
-
-    private (int, int) smallFarmSpace = (2, 1);
-    private (int, int) bigFarmSpace = (2, 2);
-    private (int, int) smallHouseSpace = (1, 1);
-    private (int, int) bigHouseSpace = (2, 2);
-    private (int, int) smallPowerPlantSpace = (1, 1);
-    private (int, int) bigPowerPlantSpace = (2, 2);
-    private (int, int) smallBusinessSpace = (1, 1);
-    private (int, int) bigBusinessSpace = (2, 2);
-
-    private Cost smallFarmCost = new Cost(0, 1, 0, 0);
-    private Cost bigFarmCost = new Cost(0, 3, 3, 0);
-    private Cost smallHouseCost = new Cost(3, 0, 0, 0);
-    private Cost bigHouseCost = new Cost(7, 0, 2, 0);
-    private Cost smallPowerPlantCost = new Cost(0, 10, 0, 0);
-    private Cost bigPowerPlantCost = new Cost(0, 30, 0, 0);
-    private Cost smallBusinessCost = new Cost(4, 4, 4, 0);
-    private Cost bigBusinessCost = new Cost(10, 10, 10, 0);
 
     private GameObject placeholderGameObject = null;
 
@@ -72,21 +38,21 @@ public class BuildingPlaceholder : MonoBehaviour
     private (int, int) GetSpaceFromKey(string key)
     {
         return Global.buildingBeingPlaced == "small-farm"
-            ? smallFarmSpace
+            ? Global.smallFarmSpace
             : Global.buildingBeingPlaced == "big-farm"
-            ? bigFarmSpace
+            ? Global.bigFarmSpace
             : Global.buildingBeingPlaced == "small-house"
-            ? smallHouseSpace
+            ? Global.smallHouseSpace
             : Global.buildingBeingPlaced == "big-house"
-            ? bigHouseSpace
+            ? Global.bigHouseSpace
             : Global.buildingBeingPlaced == "small-power-plant"
-            ? smallPowerPlantSpace
+            ? Global.smallPowerPlantSpace
             : Global.buildingBeingPlaced == "big-power-plant"
-            ? bigPowerPlantSpace
+            ? Global.bigPowerPlantSpace
             : Global.buildingBeingPlaced == "small-business"
-            ? smallBusinessSpace
+            ? Global.smallBusinessSpace
             : Global.buildingBeingPlaced == "big-business"
-            ? bigBusinessSpace
+            ? Global.bigBusinessSpace
             : (0, 0);
     }
 
@@ -218,21 +184,21 @@ public class BuildingPlaceholder : MonoBehaviour
                 placeholderGameObject.transform.position = pos;
 
                 Cost cost = Global.buildingBeingPlaced == "small-farm"
-                    ? smallFarmCost
+                    ? Global.smallFarmCost
                     : Global.buildingBeingPlaced == "big-farm"
-                    ? bigFarmCost
+                    ? Global.bigFarmCost
                     : Global.buildingBeingPlaced == "small-house"
-                    ? smallHouseCost
+                    ? Global.smallHouseCost
                     : Global.buildingBeingPlaced == "big-house"
-                    ? bigHouseCost
+                    ? Global.bigHouseCost
                     : Global.buildingBeingPlaced == "small-power-plant"
-                    ? smallPowerPlantCost
+                    ? Global.smallPowerPlantCost
                     : Global.buildingBeingPlaced == "big-power-plant"
-                    ? bigPowerPlantCost
+                    ? Global.bigPowerPlantCost
                     : Global.buildingBeingPlaced == "small-business"
-                    ? smallBusinessCost
+                    ? Global.smallBusinessCost
                     : Global.buildingBeingPlaced == "big-business"
-                    ? bigBusinessCost
+                    ? Global.bigBusinessCost
                     : null;
 
                 if (Input.GetMouseButtonDown(0) && HasResources(cost))
