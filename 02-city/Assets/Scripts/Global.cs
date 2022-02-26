@@ -36,29 +36,36 @@ public class Gains {
 
 public class Global : MonoBehaviour
 {
-    public static int food = 0;
-    public static int people = 1;
+    public static int days = 0;
+
+    public static int food = 8;
+    public static int people = 5;
     public static int energy = 0;
     public static int money = 0;
-    public static int days = 0;
+
+    // Debug
+    //public static int food = 1000;
+    //public static int people = 1000;
+    //public static int energy = 1000;
+    //public static int money = 100;
 
     public static (int, int) smallFarmSpace = (2, 1);
     public static (int, int) bigFarmSpace = (2, 2);
     public static (int, int) smallHouseSpace = (1, 1);
     public static (int, int) bigHouseSpace = (2, 2);
-    public static (int, int) smallPowerPlantSpace = (1, 1);
-    public static (int, int) bigPowerPlantSpace = (2, 2);
+    public static (int, int) smallPowerPlantSpace = (2, 2);
+    public static (int, int) bigPowerPlantSpace = (3, 2);
     public static (int, int) smallBusinessSpace = (1, 1);
-    public static (int, int) bigBusinessSpace = (2, 2);
+    public static (int, int) bigBusinessSpace = (2, 1);
 
-    public static Cost smallFarmCost = new Cost(0, 1, 0, 0); // 1
-    public static Cost bigFarmCost = new Cost(0, 3, 3, 3); // 9
-    public static Cost smallHouseCost = new Cost(3, 0, 0, 0); // 3
-    public static Cost bigHouseCost = new Cost(10, 0, 10, 10); // 30
-    public static Cost smallPowerPlantCost = new Cost(0, 5, 0, 0); // 5
-    public static Cost bigPowerPlantCost = new Cost(0, 30, 0, 30); // 60
-    public static Cost smallBusinessCost = new Cost(10, 10, 10, 0); // 30
-    public static Cost bigBusinessCost = new Cost(40, 40, 40, 40); // 120
+    public static Cost smallFarmCost = new Cost(0, 5, 0, 0); // 5
+    public static Cost bigFarmCost = new Cost(0, 6, 2, 2); // 10
+    public static Cost smallHouseCost = new Cost(10, 0, 0, 0); // 10
+    public static Cost bigHouseCost = new Cost(10, 0, 5, 5); // 20
+    public static Cost smallPowerPlantCost = new Cost(0, 20, 0, 0); // 20
+    public static Cost bigPowerPlantCost = new Cost(0, 20, 0, 20); // 40
+    public static Cost smallBusinessCost = new Cost(20, 20, 20, 0); // 60
+    public static Cost bigBusinessCost = new Cost(40, 40, 40, 0); // 120
 
     public static Gains smallFarmGains = new Gains(2, 0, 0, 0);
     public static Gains bigFarmGains = new Gains(5, 0, 0, 0);

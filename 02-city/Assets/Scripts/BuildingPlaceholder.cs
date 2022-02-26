@@ -13,6 +13,8 @@ public class BuildingPlaceholder : MonoBehaviour
     public GameObject bigBusinessPrefab;
 
     private GameObject placeholderGameObject = null;
+    private float prefabX;
+    private float prefabZ;
 
     private GameObject GetPrefabFromKey(string key)
     {
@@ -167,7 +169,10 @@ public class BuildingPlaceholder : MonoBehaviour
         // Should be event
         if (Global.buildingBeingPlaced != null && placeholderGameObject == null)
         {
-            placeholderGameObject = Instantiate(GetPrefabFromKey(Global.buildingBeingPlaced), new Vector3(0, 0, 0), Quaternion.identity);
+            //GameObject container = Instantiate(new GameObject());
+            placeholderGameObject = Instantiate(GetPrefabFromKey(Global.buildingBeingPlaced));
+            prefabX = placeholderGameObject.transform.position.x;
+            prefabZ = placeholderGameObject.transform.position.z;
         }
         // Should be event
         if (Global.buildingBeingPlaced == null && placeholderGameObject != null)
@@ -180,7 +185,10 @@ public class BuildingPlaceholder : MonoBehaviour
             (int, int) worldPosMaybe = GetMouseCellCoords();
             if (CanBuildHere(worldPosMaybe))
             {
-                Vector3 pos = new Vector3(worldPosMaybe.Item1 + 1f, 0.1f, worldPosMaybe.Item2);
+
+                (int, int) space = GetSpaceFromKey(Global.buildingBeingPlaced);
+
+                Vector3 pos = new Vector3(worldPosMaybe.Item1 + prefabX, 0.1f, worldPosMaybe.Item2 + prefabZ);
                 placeholderGameObject.transform.position = pos;
 
                 Cost cost = Global.buildingBeingPlaced == "small-farm"
@@ -203,7 +211,8 @@ public class BuildingPlaceholder : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0) && HasResources(cost))
                 {
-                    Instantiate(GetPrefabFromKey(Global.buildingBeingPlaced), pos, Quaternion.identity);
+                    GameObject obj = Instantiate(GetPrefabFromKey(Global.buildingBeingPlaced));
+                    obj.transform.position = pos;
                     Destroy(placeholderGameObject);
                     OccupySpace(worldPosMaybe, GetSpaceFromKey(Global.buildingBeingPlaced));
                     Global.buildingsBuilt.Add(Global.buildingBeingPlaced);
